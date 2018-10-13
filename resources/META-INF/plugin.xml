@@ -1,0 +1,31 @@
+<idea-plugin>
+  <id>adinar.FstringMigrator</id>
+  <name>Format to fstring migrator</name>
+  <version>0.9.1</version>
+  <vendor email="naruszko.adrian@gmail.com">Adrian Naruszko</vendor>
+
+  <description><![CDATA[
+      Python plugin to replace string formats to fstrings. Just select roughly text containing formats (one or more),
+      press hotkey (Ctr+Alt+Q) and your fstring is ready!<br>
+      Note that this is a heuristic, it should handle most cases, but you should take a look at the result.
+    ]]></description>
+
+  <change-notes><![CDATA[]]>
+  </change-notes>
+
+  <idea-version since-build="173.0"/>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="main.adinar.FstringMigrator" class="main.adinar.FstringMigrator" text="Fstring Migrator"
+            description="Migrate format to fstring">
+      <add-to-group group-id="RefactoringMenu" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt Q"/>
+    </action>
+  </actions>
+
+</idea-plugin>
