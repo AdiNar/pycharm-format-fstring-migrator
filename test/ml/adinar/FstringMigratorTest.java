@@ -1,8 +1,7 @@
-package main.adinar;
+package ml.adinar;
 
 import java.util.Map;
 
-import main.adinar.FstringMigrator.Arguments;
 import junit.framework.TestCase;
 
 public class FstringMigratorTest extends TestCase {
@@ -22,7 +21,7 @@ public class FstringMigratorTest extends TestCase {
         assertEquals("aa=cc, bb=ewq", arguments);
         assertEquals(" abcdefgh", mu.buffer);
 
-        Arguments args = mu.parseArguments(arguments);
+        FstringMigrator.Arguments args = mu.parseArguments(arguments);
         Map<String, String> argumentsMap = args.map;
 
         assertEquals(" abcdefgh", mu.buffer);

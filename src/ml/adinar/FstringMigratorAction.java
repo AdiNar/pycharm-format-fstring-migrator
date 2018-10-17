@@ -14,7 +14,7 @@
    limitations under the License.
  */
 
-package main.adinar;
+package ml.adinar;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

@@ -1,5 +1,5 @@
 <idea-plugin>
-  <id>adinar.FstringMigrator</id>
+  <id>ml.adinar.FstringMigrator</id>
   <name>Format to fstring migrator</name>
   <version>0.9.4</version>
   <vendor email="naruszko.adrian@gmail.com">Adrian Naruszko</vendor>
@@ -27,7 +27,7 @@
 
   <actions>
     <!-- Add your actions here -->
-    <action id="main.adinar.FstringMigratorAction" class="main.adinar.FstringMigratorAction" text="Fstring Migrator"
+    <action id="ml.adinar.FstringMigratorAction" class="ml.adinar.FstringMigratorAction" text="Fstring Migrator"
             description="Migrate format to fstring">
       <add-to-group group-id="RefactoringMenu" anchor="first"/>
       <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt Q"/>

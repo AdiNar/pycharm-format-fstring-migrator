@@ -14,7 +14,7 @@
    limitations under the License.
  */
 
-package main.adinar;
+package ml.adinar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
