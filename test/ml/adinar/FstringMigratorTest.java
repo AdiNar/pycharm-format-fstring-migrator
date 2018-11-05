@@ -34,7 +34,7 @@ public class FstringMigratorTest extends TestCase {
         assertEquals("costam abcdef f'abe {cc} {ewq}'", mu.result.toString());
     }
 
-    public void testBasic() {
+    public void testBasicNamed() {
         tst("costam abcdef 'abe {aa} {bb}'.format(aa=cc, bb=ewq) abcdefgh",
                 "costam abcdef f'abe {cc} {ewq}' abcdefgh");
     }
@@ -77,6 +77,10 @@ public class FstringMigratorTest extends TestCase {
 
     public void testNonNamed() {
         tst("'{} {} {}'.format(abc, def, ghi)", "f'{abc} {def} {ghi}'");
+    }
+
+    public void testLineBreak() {
+        tst("'{}'\n'{}'.format(first, second)", "f'{first}'\nf'{second}'");
     }
 
     private void tst(String in, String out) {
