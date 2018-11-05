@@ -212,7 +212,7 @@ public class FstringMigrator {
         if (lastCharBeforeClosingQuotePos < 0) return null;
 
         String prefixWithFormat = buffer.substring(0, lastCharBeforeClosingQuotePos);
-        Pattern openingQuotePattern = Pattern.compile(".*(?<!\\\\)" + quoteType);
+        Pattern openingQuotePattern = Pattern.compile(".*(?<!(\\\\)" + quoteType);
         Matcher matcher = openingQuotePattern.matcher(prefixWithFormat);
         int formatStart = 0;
         if (matcher.find()) {
