@@ -24,6 +24,7 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.intellij.ide.plugins.PluginManager;
 import org.codehaus.plexus.util.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -206,14 +207,23 @@ public class FstringMigrator {
         assert buffer.charAt(firstQuote.pos) == firstQuote.quoteChar;
 
         String prefixWithFirstFormat = buffer.substring(0, firstQuote.pos + 1);
+
         String groupWithTextBeforeFormatStringRegex = "[\\s\\S]*";
+        String formatStringContentRegex = "[\\s\\S]*";
         String lastNotEscapedQuoteRegex = String.format("(?<!\\\\)%c", firstQuote.quoteChar);
-        Pattern openingQuotePattern = Pattern.compile(String.format("(%s)(%s[\\s\\S]*)%c",
-                        groupWithTextBeforeFormatStringRegex, lastNotEscapedQuoteRegex, firstQuote.quoteChar));
+        Pattern openingQuotePattern = Pattern.compile(String.format("(%s)(%s%s)%c",
+                groupWithTextBeforeFormatStringRegex, lastNotEscapedQuoteRegex,
+                formatStringContentRegex, firstQuote.quoteChar));
         Matcher matcher = openingQuotePattern.matcher(prefixWithFirstFormat);
         int formatStart = 0;
         if (matcher.find()) {
             formatStart = getLengthOfTextBeforeFormatString(matcher);
+
+            if (matcher.group(2).contains("\n")) {
+                PluginManager.getLogger().error(String.format("%s contains newline and will be ignored",
+                        matcher.group(0)));
+                return null;
+            }
         }
 
         return new FormatInfo(formatStart, firstQuote.pos, firstQuote.quoteChar);
@@ -238,6 +248,7 @@ public class FstringMigrator {
 
         @Override
         public int compareTo(@NotNull QuoteOccurence o) {
+            if (!this.exists()) return 1;
             if (o.exists() && o.pos < this.pos) return 1;
             return -1;
         }
