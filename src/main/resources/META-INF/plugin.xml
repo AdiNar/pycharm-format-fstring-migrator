@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>ml.adinar.FstringMigrator</id>
+    <id>adinar.FstringMigrator</id>
     <name>Format to fstring migrator</name>
     <version>0.9.4</version>
     <vendor email="naruszko.adrian@gmail.com">Adrian Naruszko</vendor>

@@ -24,7 +24,7 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.intellij.ide.plugins.PluginManager;
+import com.intellij.openapi.diagnostic.Logger;
 import org.codehaus.plexus.util.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -36,10 +36,12 @@ public class FstringMigrator {
     StringBuffer result;
     private FormatInfo firstFormatInfo;
     private String firstFormat;
+    private Logger logger;
 
     public FstringMigrator(String selection) {
         this.buffer = selection;
         result = new StringBuffer();
+        logger = Logger.getInstance("adinar.FstringMigrator");
     }
 
     public String getResultReplace() {
@@ -220,7 +222,7 @@ public class FstringMigrator {
             formatStart = getLengthOfTextBeforeFormatString(matcher);
 
             if (matcher.group(2).contains("\n")) {
-                PluginManager.getLogger().error(String.format("%s contains newline and will be ignored",
+                logger.error(String.format("%s contains newline and will be ignored",
                         matcher.group(0)));
                 return null;
             }
