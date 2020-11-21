@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'cf.adinar'
-version '0.94-SNAPSHOT'
+version '0.94'
 
 repositories {
     mavenCentral()

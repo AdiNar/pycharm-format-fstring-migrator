@@ -4,10 +4,14 @@
     <version>0.9.4</version>
     <vendor email="naruszko.adrian@gmail.com">Adrian Naruszko</vendor>
 
-    <description><![CDATA[
+    <description><![CDATA[Before using this plugin, please check out the PyCharm builtin feature
+      'Convert to f-string literal'. <br> <br>
       Python plugin to replace string formats to fstrings. Just select roughly text containing formats (one or more),
       press hotkey (Ctr+Alt+Q) and your fstring is ready!<br>
-      Note that this is a heuristic, it should handle most cases, but you should take a look at the result.
+      Note that this is a heuristic, it should handle most cases, but you should take a look at the result. <br> <br>
+
+      Known issues: <br>
+      Format strings containing newlines will be ignored.
     ]]></description>
 
     <change-notes><![CDATA[
@@ -19,8 +23,8 @@
 
     <idea-version since-build="173.0"/>
 
+    <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.python</depends>
-
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
     </extensions>
